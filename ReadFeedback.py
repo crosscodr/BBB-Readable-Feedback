@@ -61,13 +61,13 @@ def parsefeedback(args):
             for line in readfile:
                 # Get good UTF-8 encoding
                 line = bytes(line, encoding='latin1').decode('unicode_escape')
-                line = bytes(line, encoding='latin1').decode('UTF-8')
+                #line = bytes(line, encoding='latin1').decode('UTF-8')
 
                 # Skip empty lines
-                try:
-                    line = line.split(r" [")[2][:-2]
-                except IndexError:
-                    continue
+                #try:
+                #    line = line.split(r" [")[2][:-2]
+                #except IndexError:
+                #    continue
 
                 # String formatting
                 line = line.replace(r"\n", " ")
@@ -75,6 +75,7 @@ def parsefeedback(args):
                 line = line.replace("{", "")
                 line = line.replace(",", ":")
                 line = line.replace('"', '')
+                line = line.replace('\x22', '')
                 line = line.split(":")
 
                 # Read the timestamp
